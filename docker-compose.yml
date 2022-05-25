@@ -7,10 +7,10 @@ services:
       args:
         VERSION: 1.0.0
       labels:
-        org.label-schema.build-date: '2022-05-25T08:25:06Z'
+        org.label-schema.build-date: '2022-05-25T08:57:37Z'
         org.label-schema.schema-version: '1.0'
-        org.label-schema.vcs-ref: ''
-        org.label-schema.vcs-url: ''
+        org.label-schema.vcs-ref: d13473f
+        org.label-schema.vcs-url: git@github.com:elisabettai/spinal-cord-toolbox.git
         io.simcore.name: '{"name": "spinal-cord-toolbox-app"}'
         io.simcore.thumbnail: '{"thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Jupyter_logo.svg/1024px-Jupyter_logo.svg.png"}'
         io.simcore.description: '{"description": "Spinal Cord Toolbox (SCT) is a comprehensive,
@@ -39,10 +39,10 @@ services:
       args:
         VERSION: 1.0.0
       labels:
-        org.label-schema.build-date: '2022-05-25T08:25:06Z'
+        org.label-schema.build-date: '2022-05-25T08:57:37Z'
         org.label-schema.schema-version: '1.0'
-        org.label-schema.vcs-ref: ''
-        org.label-schema.vcs-url: ''
+        org.label-schema.vcs-ref: d13473f
+        org.label-schema.vcs-url: git@github.com:elisabettai/spinal-cord-toolbox.git
         io.simcore.name: '{"name": "spinal-cord-toolbox-web"}'
         io.simcore.thumbnail: '{"thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Jupyter_logo.svg/1024px-Jupyter_logo.svg.png"}'
         io.simcore.description: '{"description": "Spinal Cord Toolbox (SCT) is a comprehensive,

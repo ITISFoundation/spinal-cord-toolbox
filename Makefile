@@ -46,7 +46,7 @@ shell-app: ## enter app container
 publish-local:  ## push to local throw away registry to test integration
 	@docker tag simcore/services/dynamic/${WEB_NAME}:${DOCKER_IMAGE_TAG} registry:5000/simcore/services/dynamic/${WEB_NAME}:${DOCKER_IMAGE_TAG}
 	@docker tag simcore/services/dynamic/${APP_NAME}:${DOCKER_IMAGE_TAG} registry:5000/simcore/services/dynamic/${APP_NAME}:${DOCKER_IMAGE_TAG}
-	@docker tag local/${APP_NAME}:production registry:5000/simcore/services/dynamic/${APP_NAME}:${DOCKER_IMAGE_TAG}
+	@docker push registry:5000/simcore/services/dynamic/${WEB_NAME}:${DOCKER_IMAGE_TAG}
 	@docker push registry:5000/simcore/services/dynamic/${APP_NAME}:${DOCKER_IMAGE_TAG}
 
 .PHONY: help
