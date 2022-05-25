@@ -1,0 +1,5 @@
+services:
+  "spinal-cord-toolbox-web":
+    build:
+      context: ./web
+      dockerfile: Dockerfile
