@@ -7,12 +7,12 @@ services:
       args:
         VERSION: 1.0.0
       labels:
-        org.label-schema.build-date: '2022-05-25T08:57:37Z'
+        org.label-schema.build-date: '2022-06-01T08:16:55Z'
         org.label-schema.schema-version: '1.0'
-        org.label-schema.vcs-ref: d13473f
+        org.label-schema.vcs-ref: f5f2eb9
         org.label-schema.vcs-url: git@github.com:elisabettai/spinal-cord-toolbox.git
         io.simcore.name: '{"name": "spinal-cord-toolbox-app"}'
-        io.simcore.thumbnail: '{"thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Jupyter_logo.svg/1024px-Jupyter_logo.svg.png"}'
+        io.simcore.thumbnail: '{"thumbnail": "https://repository-images.githubusercontent.com/20361729/e268cd80-ad32-11e9-9faf-4cd1193b6144"}'
         io.simcore.description: '{"description": "Spinal Cord Toolbox (SCT) is a comprehensive,
           free and open-source set of command-line tools dedicated to the processing
           and analysis of spinal cord MRI data see (https://github.com/spinalcordtoolbox/spinalupport
@@ -28,9 +28,8 @@ services:
         io.simcore.outputs: '{"outputs": {}}'
         simcore.service.settings: '[{"name": "constraints", "type": "string", "value":
           ["node.platform.os == linux"]}, {"name": "Resources", "type": "Resources",
-          "value": {"Limits": {"NanoCPUs": 1000000000, "MemoryBytes": 1073741824},
-          "Reservations": {"NanoCPUs": 1000000000, "MemoryBytes": 1073741824, "GenericResources":
-          [{"DiscreteResourceSpec": {"Kind": "VRAM", "Value": 1}}]}}}]'
+          "value": {"Limits": {"NanoCPUs": 4000000000, "MemoryBytes": 4294967296},
+          "Reservations": {"NanoCPUs": 2000000000, "MemoryBytes": 2147483648}}}]'
     image: simcore/services/dynamic/spinal-cord-toolbox-app:1.0.0
   spinal-cord-toolbox-web:
     build:
@@ -39,12 +38,12 @@ services:
       args:
         VERSION: 1.0.0
       labels:
-        org.label-schema.build-date: '2022-05-25T08:57:37Z'
+        org.label-schema.build-date: '2022-06-01T08:16:55Z'
         org.label-schema.schema-version: '1.0'
-        org.label-schema.vcs-ref: d13473f
+        org.label-schema.vcs-ref: f5f2eb9
         org.label-schema.vcs-url: git@github.com:elisabettai/spinal-cord-toolbox.git
         io.simcore.name: '{"name": "spinal-cord-toolbox-web"}'
-        io.simcore.thumbnail: '{"thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Jupyter_logo.svg/1024px-Jupyter_logo.svg.png"}'
+        io.simcore.thumbnail: '{"thumbnail": "https://repository-images.githubusercontent.com/20361729/e268cd80-ad32-11e9-9faf-4cd1193b6144"}'
         io.simcore.description: '{"description": "Spinal Cord Toolbox (SCT) is a comprehensive,
           free and open-source set of command-line tools dedicated to the processing
           and analysis of spinal cord MRI data see (https://github.com/spinalcordtoolbox/spinalupport
@@ -72,7 +71,6 @@ services:
         simcore.service.settings: '[{"name": "constraints", "type": "string", "value":
           ["node.platform.os == linux"]}, {"name": "Resources", "type": "Resources",
           "value": {"Limits": {"NanoCPUs": 100000000, "MemoryBytes": 104857600}, "Reservations":
-          {"NanoCPUs": 100000000, "MemoryBytes": 104857600, "GenericResources": [{"DiscreteResourceSpec":
-          {"Kind": "VRAM", "Value": 1}}]}}}, {"name": "ports", "type": "int", "value":
-          28080}, {"name": "env", "type": "string", "value": ["APP_HOSTNAME=%%container_name.spinal-cord-toolbox-app%%"]}]'
+          {"NanoCPUs": 100000000, "MemoryBytes": 104857600}}}, {"name": "ports", "type":
+          "int", "value": 28080}, {"name": "env", "type": "string", "value": ["APP_HOSTNAME=%%container_name.spinal-cord-toolbox-app%%"]}]'
     image: simcore/services/dynamic/spinal-cord-toolbox-web:1.0.0

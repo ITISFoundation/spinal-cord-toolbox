@@ -13,10 +13,6 @@ settings:
       Reservations:
         NanoCPUs: 100000000 # 0.1 CPU
         MemoryBytes: 104857600 # 100 MB
-        GenericResources:
-          - DiscreteResourceSpec:
-              Kind: VRAM
-              Value: 1
   - name: ports
     type: int
     value: 28080

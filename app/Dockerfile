@@ -1,7 +1,6 @@
-FROM ubuntu:18.04 AS base
+FROM ubuntu:20.04 AS base
 
 ENV DEBIAN_FRONTEND=noninteractive
-
 
 RUN apt-get update -y && \
     apt-get install -y --no-install-recommends \
@@ -12,7 +11,7 @@ RUN apt-get update -y && \
     net-tools \
     openbox \
     procps \
-    python3 \
+    python3.8 \
     python3-pip \
     supervisor \
     tigervnc-standalone-server \
@@ -54,8 +53,8 @@ FROM base AS production
 
 # TODO: Change according to your needs
 RUN apt-get update -y && \
-    apt-get install -y curl bzip2 libglib2.0-0 gcc libgtk2.0-0 menu && \
-    rm -rf /var/lib/apt/lists
+    apt-get install -y curl bzip2 libglib2.0-0 gcc menu libsdl1.2debian libsdl2-2.0-0 freeglut3 libgtk2.0-0 libnotify4 && \
+    rm -rf /var/lib/apt/lists 
 
 # Install sct
 RUN git clone https://github.com/spinalcordtoolbox/spinalcordtoolbox.git sct && \
@@ -64,14 +63,29 @@ RUN git clone https://github.com/spinalcordtoolbox/spinalcordtoolbox.git sct && 
 
 ENV PATH="/sct/bin:${PATH}"
 ENV SCT_DIR=/sct
+
+
+# Option 1: Install FSLeyes (for GUI part) using existing conda env
+#RUN . /sct/python/etc/profile.d/conda.sh && \
+#    conda activate venv_sct && \
+#    conda create -c conda-forge -p fsleyes_env fsleyes "wxpython=4.0.*"
 # Might be set to something different if necessary
-ENV FSLDIR=/fsleyes_env 
+# ENV FSLDIR=/fsleyes_env
 
 
-# Install FSLeyes (for GUI part) using existing conda env
-RUN . /sct/python/etc/profile.d/conda.sh && \
-    conda activate venv_sct && \
-    conda create -c conda-forge -p fsleyes_env fsleyes "wxpython=4.0.*"
+# Option 2: Install FSLeyes (for GUI part) in a new virtual environment
+#RUN apt-get install -y python3-venv
+
+RUN pip install virtualenv
+RUN virtualenv -p python3.8 /sct/fsleyes_env && \
+#RUN python3 -m venv /sct/fsleyes_env && \
+    . /sct/fsleyes_env/bin/activate && \
+    pip install --upgrade pip && \
+    pip install -f https://extras.wxpython.org/wxPython4/extras/linux/gtk2/ubuntu-18.04 wxpython && \
+    pip install fsleyes
+
+ENV PATH="/sct/fsleyes_env/bin:${PATH}"
+ENV FSLDIR=/sct/contrib/fsl_integration
 
 COPY config/menu.xml /etc/xdg/openbox/
 COPY config/supervisord.conf /etc/
