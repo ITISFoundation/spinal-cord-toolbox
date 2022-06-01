@@ -1,0 +1,35 @@
+restart-policy: no-restart
+settings:
+  - name: constraints
+    type: string
+    value:
+      - node.platform.os == linux
+  - name: Resources
+    type: Resources
+    value:
+      Limits:
+        NanoCPUs: 100000000 # 0.1 CPU
+        MemoryBytes: 104857600 # 100 MB
+      Reservations:
+        NanoCPUs: 100000000 # 0.1 CPU
+        MemoryBytes: 104857600 # 100 MB
+  - name: ports
+    type: int
+    value: 28080
+  - name: env
+    type: string
+    value:
+      - APP_HOSTNAME=%%container_name.spinal-cord-toolbox-app%%
+paths-mapping:
+  outputs_path: "/home/scu/work/outputs"
+  inputs_path: "/home/scu/work/inputs"
+  state_paths: ["/home/scu/work/workspace"]
+compose-spec:
+  version: "3.7"
+  services:
+    "spinal-cord-toolbox-web":
+      image: $${SIMCORE_REGISTRY}/simcore/services/dynamic/spinal-cord-toolbox-web:$${SERVICE_VERSION}
+
+    "spinal-cord-toolbox-app":
+      image: $${SIMCORE_REGISTRY}/simcore/services/dynamic/spinal-cord-toolbox-app:$${SERVICE_VERSION}
+container-http-entrypoint: "spinal-cord-toolbox-web"

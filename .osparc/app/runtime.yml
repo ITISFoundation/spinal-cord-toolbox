@@ -1,0 +1,15 @@
+settings:
+  - name: constraints
+    type: string
+    value:
+      - node.platform.os == linux
+  - name: Resources
+    type: Resources
+    value:
+      # NOTE: change these limits and reservations accordingly to the service's needs
+      Limits:
+        NanoCPUs: 4000000000 # 4 CPU
+        MemoryBytes: 17179869184 # 16 GB
+      Reservations:
+        NanoCPUs: 1000000000 # 1 CPU
+        MemoryBytes: 1073741824 # 1 GB

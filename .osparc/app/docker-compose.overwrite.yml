@@ -1,0 +1,5 @@
+services:
+  "spinal-cord-toolbox-app":
+    build:
+      context: ./app
+      dockerfile: Dockerfile

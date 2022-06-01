@@ -39,7 +39,7 @@ Two versions:
 - service version (e.g. ```spinal-cord-toolbox/VERSION```) is updated with ``make version-service-*``
 
 ## CI/CD Integration
-A template ci config file is created in```spinal-cord-toolbox/ci/.gitlab-ci.yml```)
+A template ci config file is created in```spinal-cord-toolbox/ci/.gitlab-ci.yml```) from the cookiecutter. This was removed and a GitHub ci file was copied from an existing service.
 
 ### Gitlab
 
