@@ -65,20 +65,10 @@ ENV PATH="/sct/bin:${PATH}"
 ENV SCT_DIR=/sct
 
 
-# Option 1: Install FSLeyes (for GUI part) using existing conda env
-#RUN . /sct/python/etc/profile.d/conda.sh && \
-#    conda activate venv_sct && \
-#    conda create -c conda-forge -p fsleyes_env fsleyes "wxpython=4.0.*"
-# Might be set to something different if necessary
-# ENV FSLDIR=/fsleyes_env
-
-
-# Option 2: Install FSLeyes (for GUI part) in a new virtual environment
-#RUN apt-get install -y python3-venv
+# Install FSLeyes (for GUI part) in a new virtual environment
 
 RUN pip install virtualenv
 RUN virtualenv -p python3.8 /sct/fsleyes_env && \
-#RUN python3 -m venv /sct/fsleyes_env && \
     . /sct/fsleyes_env/bin/activate && \
     pip install --upgrade pip && \
     pip install -f https://extras.wxpython.org/wxPython4/extras/linux/gtk2/ubuntu-18.04 wxpython && \

@@ -9,7 +9,7 @@ settings:
       # NOTE: change these limits and reservations accordingly to the service's needs
       Limits:
         NanoCPUs: 4000000000 # 4 CPU
-        MemoryBytes: 4294967296 # 4 GB
+        MemoryBytes: 17179869184 # 16 GB
       Reservations:
-        NanoCPUs: 2000000000 # 2 CPU
-        MemoryBytes: 2147483648 # 2 GB
+        NanoCPUs: 1000000000 # 1 CPU
+        MemoryBytes: 1073741824 # 1 GB
