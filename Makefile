@@ -2,7 +2,7 @@
 SHELL = /bin/sh
 .DEFAULT_GOAL := help
 
-DOCKER_IMAGE_TAG ?= 1.0.0
+DOCKER_IMAGE_TAG ?= 1.0.1
 
 export SERVICE_NAME=spinal-cord-toolbox
 export APP_NAME=${SERVICE_NAME}-app
