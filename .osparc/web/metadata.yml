@@ -1,4 +1,4 @@
-name: "spinal-cord-toolbox-web"
+name: "Spinal Cord Toolbox"
 thumbnail: https://repository-images.githubusercontent.com/20361729/e268cd80-ad32-11e9-9faf-4cd1193b6144
 description: "Spinal Cord Toolbox (SCT) is a comprehensive, free and open-source set of command-line tools dedicated to the processing and analysis of spinal cord MRI data see (https://github.com/spinalcordtoolbox/spinalupport it provided (FSLeyes)."
 key: simcore/services/dynamic/spinal-cord-toolbox-web
