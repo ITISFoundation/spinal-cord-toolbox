@@ -45,3 +45,4 @@ A template ci config file is created in ```.github/workflows/check-image.yml``) 
 
 The required CI is already packaged.
 To build and push to the internal registry you must add it to the [oSparc/docker-publisher-osparc-services](https://git.speag.com/oSparc/docker-publisher-osparc-services) repository.
+
