@@ -13,7 +13,7 @@ define _bumpversion
 	# upgrades as $(subst $(1),,$@) version, commits and tags
 	@docker run -it --rm -v $(PWD):/spinal-cord-toolbox \
 		-u $(shell id -u):$(shell id -g) \
-		itisfoundation/ci-service-integration-library:v1.0.1-dev-25 \
+		itisfoundation/ci-service-integration-library:v2.0.5 \
 		sh -c "cd /spinal-cord-toolbox && bump2version --verbose --list --config-file $(1) $(subst $(2),,$@)"
 endef
 
@@ -28,7 +28,7 @@ version-patch version-minor version-major: .bumpversion.cfg ## increases service
 compose-spec: ## runs ooil to assemble the docker-compose.yml file
 	@docker run -it --rm -v $(PWD):/spinal-cord-toolbox \
 		-u $(shell id -u):$(shell id -g) \
-		itisfoundation/ci-service-integration-library:v1.0.1-dev-25 \
+		itisfoundation/ci-service-integration-library:v2.0.5 \
 		sh -c "cd /spinal-cord-toolbox && ooil compose"
 
 .PHONY: build
