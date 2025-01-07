@@ -33,11 +33,11 @@ compose-spec: ## runs ooil to assemble the docker-compose.yml file
 
 .PHONY: build
 build: compose-spec ## build docker images
-	docker-compose build
+	docker compose build
 
 .PHONY: run-local
 run-local: ## runs images with local configuration
-	docker-compose --file docker-compose-local.yml up
+	docker compose --file docker-compose-local.yml up
 
 .PHONY: shell-app up
 shell-app: ## enter app container
