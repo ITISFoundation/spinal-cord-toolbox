@@ -71,7 +71,7 @@ RUN pip install virtualenv
 RUN virtualenv -p python3.8 /sct/fsleyes_env && \
     . /sct/fsleyes_env/bin/activate && \
     pip install --upgrade pip && \
-    pip install -f https://extras.wxpython.org/wxPython4/extras/linux/gtk2/ubuntu-18.04 wxpython && \
+    pip install -f https://extras.wxpython.org/wxPython4/extras/linux/gtk2/ubuntu-18.04 wxpython==4.1.1 && \
     pip install fsleyes
 
 ENV PATH="/sct/fsleyes_env/bin:${PATH}"
