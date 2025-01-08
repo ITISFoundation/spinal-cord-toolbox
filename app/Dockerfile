@@ -11,7 +11,7 @@ RUN apt-get update -y && \
     net-tools \
     openbox \
     procps \
-    python3.8 \
+    python3.9 \
     python3-pip \
     supervisor \
     tigervnc-standalone-server \
@@ -51,7 +51,6 @@ ENV LANG=C.UTF-8
 
 FROM base AS production
 
-# TODO: Change according to your needs
 RUN apt-get update -y && \
     apt-get install -y curl bzip2 libglib2.0-0 gcc menu libsdl1.2debian libsdl2-2.0-0 freeglut3 libgtk2.0-0 libnotify4 && \
     rm -rf /var/lib/apt/lists 
@@ -59,6 +58,7 @@ RUN apt-get update -y && \
 # Install sct
 RUN git clone https://github.com/spinalcordtoolbox/spinalcordtoolbox.git sct && \
     cd sct && \
+    git checkout cae52ada6e4c7ec8c7e7fd8a8d05a2d2dfa1288f && \
     ./install_sct -y
 
 ENV PATH="/sct/bin:${PATH}"
@@ -68,10 +68,10 @@ ENV SCT_DIR=/sct
 # Install FSLeyes (for GUI part) in a new virtual environment
 
 RUN pip install virtualenv
-RUN virtualenv -p python3.8 /sct/fsleyes_env && \
+RUN virtualenv -p python3.9 /sct/fsleyes_env && \
     . /sct/fsleyes_env/bin/activate && \
     pip install --upgrade pip && \
-    pip install -f https://extras.wxpython.org/wxPython4/extras/linux/gtk2/ubuntu-18.04 wxpython && \
+    pip install -f https://extras.wxpython.org/wxPython4/extras/linux/gtk2/ubuntu-18.04 wxpython==4.1.1 && \
     pip install fsleyes
 
 ENV PATH="/sct/fsleyes_env/bin:${PATH}"
