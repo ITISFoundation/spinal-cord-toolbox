@@ -56,9 +56,13 @@ RUN apt-get update -y && \
     rm -rf /var/lib/apt/lists 
 
 # Install sct
+# Fix: Recent Conda versions require ToS acceptance for default Anaconda channels.
+# Add --override-channels to all conda create/install commands so only conda-forge is used.
 RUN git clone https://github.com/spinalcordtoolbox/spinalcordtoolbox.git sct && \
     cd sct && \
     git checkout cae52ada6e4c7ec8c7e7fd8a8d05a2d2dfa1288f && \
+    sed -i 's|conda create -y|conda create -y -c conda-forge --override-channels|' install_sct && \
+    sed -i 's|conda install -y -c conda-forge|conda install -y -c conda-forge --override-channels|' install_sct && \
     ./install_sct -y
 
 ENV PATH="/sct/bin:${PATH}"
